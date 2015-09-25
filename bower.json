@@ -1,0 +1,22 @@
+{
+  "name": "to-list",
+  "version": "1.0",
+  "authors": [
+    "Vladimir Tonkonogov <tonk0006@algonquinlive.com>"
+  ],
+  "description": "This is my To-Do List Angular App",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-bootstrap": "~0.13.4",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}

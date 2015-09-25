@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoList">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS To-Do List</title>
+<!--    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">-->
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="//use.edgefonts.net/aclonica;advent-pro.js"></script>
+</head>
+
+<body>
+
+    <div ui-view></div>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="controllers/main-controller.js"></script>
+
+    <script type="text/ng-template" id="main.html">
+        <section id="header">
+            <h1>{{name | uppercase}}</h1>
+        </section>
+        <section id="list">
+            <form ng-submit="addItem()" name="form">
+                <input ng-model="newItem" type="text" placeholder="Add a task here..." id="input" required>
+                <input type="submit" value="Add task" class="button">
+            </form>
+            <form>
+                <ul class="clearfix">
+                    <li ng-repeat="item in items">
+                        <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check">
+                        <span ng-class="{'done':item.done}">{{ item.title }}</span>
+                        <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="button" id="delBtn">
+                    </li>
+                </ul>
+                <div id="clearCompletedDiv">
+                    <input ng-click="clearCompleted()" type="submit" value="Clear completed tasks" class="button" id="clearCompleted">
+                </div>
+            </form>
+        </section>
+    </script>
+</body>
+
+</html>
