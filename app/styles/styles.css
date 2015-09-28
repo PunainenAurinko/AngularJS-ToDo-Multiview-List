@@ -1,0 +1,40 @@
+.navbar {
+/*    margin-bottom: 3rem;*/
+}
+
+.form-group li {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    margin-left: 5%;
+    margin-right: 3rem;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 5px;
+}
+
+input[type="checkbox"]:checked {
+    /***Icon pack by Icons8 - https://icons8.com***/
+    background: url(https://maxcdn.icons8.com/Android_L/PNG/24/Very_Basic/checkmark-24.png);
+    background-size: 100%;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+#delBtn {
+    float: right;
+    font-size: 18px;
+    margin-right: 5%;
+    padding: 0.2rem 0.9rem;
+}
+
+#clearCompleted {
+    margin-top: 3rem;
+}
