@@ -1,48 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="todoList">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS To-Do List</title>
-<!--    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">-->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <!--    <link rel="stylesheet" href="styles/main.css">-->
     <script src="//use.edgefonts.net/aclonica;advent-pro.js"></script>
-</head>
-
-<body>
-
-    <div ui-view></div>
-
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="scripts/app.js"></script>
     <script src="controllers/main-controller.js"></script>
+</head>
 
-    <script type="text/ng-template" id="main.html">
-        <section id="header">
-            <h1>{{name | uppercase}}</h1>
-        </section>
-        <section id="list">
-            <form ng-submit="addItem()" name="form">
-                <input ng-model="newItem" type="text" placeholder="Add a task here..." id="input" required>
-                <input type="submit" value="Add task" class="button">
-            </form>
-            <form>
-                <ul class="clearfix">
-                    <li ng-repeat="item in items">
-                        <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check">
-                        <span ng-class="{'done':item.done}">{{ item.title }}</span>
-                        <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="button" id="delBtn">
-                    </li>
-                </ul>
-                <div id="clearCompletedDiv">
-                    <input ng-click="clearCompleted()" type="submit" value="Clear completed tasks" class="button" id="clearCompleted">
-                </div>
-            </form>
-        </section>
-    </script>
+<body ng-app="todoList">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-inverse navbar-fixed-top glyphicon" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="tab1"></i>Vlad's To-Do Lists</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="tab1" class="btn btn-danger">List 1</a></li>
+            <li><a ui-sref="tab2" class="btn btn-danger">List 2</a></li>
+            <li><a ui-sref="tab3" class="btn btn-danger">List 3</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- INJECTING CONTENT HERE -->
+        <div ui-view></div>
+        
+        <section id="header"></section>
+
+    </div>
+
 </body>
 
 </html>

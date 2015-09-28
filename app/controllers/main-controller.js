@@ -1,8 +1,12 @@
 'use strict';
 
-angular.module('todoList').controller('todoListController', ['$scope', function ($scope) {
+var todoList = angular.module('todoList');
 
-    $scope.name = 'to-do list';
+    // DEFAULT CONTROLLER
+
+todoList.controller('todoListController', ['$scope', function ($scope) {
+
+    $scope.name = 'to-do list 1';
 
     // DEFAULT LIST ITEMS
 
@@ -20,7 +24,7 @@ angular.module('todoList').controller('todoListController', ['$scope', function 
             'done': false
         }
             ];
-
+    
     // ADD ITEMS TO THE LIST
 
     $scope.addItem = function () {
