@@ -5,6 +5,7 @@
 .form-group li {
     padding-bottom: 1rem;
     border-bottom: 1px solid #ddd;
+    text-transform: uppercase;
 }
 
 input[type="checkbox"] {

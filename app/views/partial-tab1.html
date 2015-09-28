@@ -16,28 +16,28 @@
         </div>
     </section>
     <section id="list" class="jumbotron text-center">
-    <form ng-submit="addItem()" name="form" class="form-group row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <input ng-model="newItem" type="text" placeholder="Add a task here..." id="input" class="form-control" required>
-        </div>
-        <div class="col-md-1"></div>
-        <input type="submit" value="Add task" class="btn btn-primary button col-md-3">
-    </form>
-    <form class="form-group row">
-        <ul class="clearfix list-unstyled">
-            <li ng-repeat="item in items">
-                <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check" class="checkbox">
-                <span ng-class="{'done':item.done}">{{ item.title }}</span>
-                <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="btn btn-danger button" id="delBtn">
-            </li>
-        </ul>
-        <div id="clearCompletedDiv">
-            <div class="col-md-4"></div>
-            <input ng-click="clearCompleted()" type="submit" value="Clear completed tasks" class="btn btn-primary button col-md-4" id="clearCompleted">
-        </div>
-    </form>
-</section>
+        <form ng-submit="addItem()" name="form" class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <input ng-model="newItem" type="text" placeholder="Add a task here..." id="input" class="form-control" required>
+            </div>
+            <div class="col-md-1"></div>
+            <input type="submit" value="Add task" class="btn btn-primary button col-md-3">
+        </form>
+        <form class="form-group row">
+            <ul class="clearfix list-unstyled">
+                <li ng-repeat="item in items">
+                    <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check" class="checkbox">
+                    <span ng-class="{'done':item.done}">{{ item.title }}</span>
+                    <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="btn btn-danger button" id="delBtn">
+                </li>
+            </ul>
+            <div id="clearCompletedDiv">
+                <div class="col-md-4"></div>
+                <input ng-click="clearCompleted()" type="submit" value="Clear completed tasks" class="btn btn-primary button col-md-4" id="clearCompleted">
+            </div>
+        </form>
+    </section>
 
     <script src=""></script>
 </body>

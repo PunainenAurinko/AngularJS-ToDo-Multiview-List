@@ -2,29 +2,33 @@
 
 var todoList = angular.module('todoList');
 
-    // DEFAULT CONTROLLER
+// TAB 2 CONTROLLER
 
-todoList.controller('todoListController', ['$scope', function ($scope) {
+todoList.controller('tab2Controller', ['$scope', function ($scope, $localStorage) {
 
-    $scope.name = 'to-do list 1';
+    $scope.name = 'to-do list 2';
 
-    // DEFAULT LIST ITEMS
+    // TAB 2 DEFAULT LIST ITEMS
 
     $scope.items = [
         {
-            'title': 'Learn some stuff',
+            'title': 'Forget some stuff',
             'done': false
-        },
+                    },
         {
-            'title': 'Code some stuff',
+            'title': 'Undo some stuff',
             'done': false
-        },
+                    },
         {
-            'title': 'Code some more',
+            'title': 'Forget some more',
             'done': false
-        }
+                    }
             ];
-    
+
+    // LOCAL STORAGE
+
+    $scope.$storage = $localStorage;
+
     // ADD ITEMS TO THE LIST
 
     $scope.addItem = function () {
