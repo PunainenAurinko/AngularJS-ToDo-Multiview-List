@@ -4,7 +4,7 @@ var todoList = angular.module('todoList');
 
 // DEFAULT VIEW TAB 2 CONTROLLER
 
-todoList.controller('tab2Controller', ['$scope', 'localStorageService', function ($scope, localStorageService) {
+todoList.controller('tab2Controller', ['$scope', 'localStorageService', function ($scope) {
 
     $scope.name = 'to-do list 2';
 

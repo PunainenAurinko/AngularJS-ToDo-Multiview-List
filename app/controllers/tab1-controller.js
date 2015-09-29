@@ -4,7 +4,7 @@ var todoList = angular.module('todoList');
 
 // DEFAULT VIEW TAB 1 CONTROLLER
 
-todoList.controller('tab1Controller', ['$scope', 'localStorageService', function ($scope, localStorageService) {
+todoList.controller('tab1Controller', ['$scope', '$localStorage', function ($scope, $localStorage) {
 
     $scope.name = 'to-do list 1';
 
@@ -12,13 +12,14 @@ todoList.controller('tab1Controller', ['$scope', 'localStorageService', function
 
 //    localStorage.clear();
 
-    var fullListOne = localStorage.getItem('listOne');
-    var realListOne = JSON.parse(fullListOne);
+//    var fullListOne = localStorage.getItem('listOne');
+//    var realListOne = JSON.parse(fullListOne);
+    
+    
+//    var listOne = $localStorage.listOne;
 
-    if (fullListOne === null || realListOne.length == 0) {
-
-        var defaultList = function () {
-            return [
+    if (!$localStorage.listOne || $localStorage.listOne == 0) {
+        $scope.items = [
                 {
                     'title': 'Learn some stuff',
                     'done': false
@@ -32,23 +33,48 @@ todoList.controller('tab1Controller', ['$scope', 'localStorageService', function
                     'done': false
         }
             ];
-
-        };
     } else {
-        var defaultList = function () {
-            return realListOne;
-            console.log(realListOne)
-        }
+        $scope.items = $localStorage.listOne;
     }
+    
+   
+    
+//    if (fullListOne === null || realListOne.length == 0) {
+//
+//        var defaultList = function () {
+//            return [
+//                {
+//                    'title': 'Learn some stuff',
+//                    'done': false
+//        },
+//                {
+//                    'title': 'Code some stuff',
+//                    'done': false
+//        },
+//                {
+//                    'title': 'Code some more',
+//                    'done': false
+//        }
+//            ];
+//
+//        };
+//    } else {
+//        var defaultList = function () {
+//            return realListOne;
+//            console.log(realListOne)
+//        }
+//    }
+//
+//    $scope.items = defaultList();
+//    console.log($scope.items);
+//
+//    var stor = JSON.stringify($scope.items);
+//    console.log(stor);
 
-    $scope.items = defaultList();
-    console.log($scope.items);
-
-    var stor = JSON.stringify($scope.items);
-    console.log(stor);
-
-    var list = localStorage.setItem('listOne', stor);
-
+//    var list = localStorage.setItem('listOne', stor);
+    
+    $localStorage.listOne = $scope.items;
+    
     // ADD ITEMS TO THE LIST
 
     $scope.addItem = function () {
@@ -58,8 +84,10 @@ todoList.controller('tab1Controller', ['$scope', 'localStorageService', function
             'done': false
         });
 
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listOne', stor);
+//        var stor = JSON.stringify($scope.items);
+//        var list = localStorage.setItem('listOne', stor);
+        
+        $localStorage.listOne = $scope.items;
 
         $scope.newItem = '';
     }
@@ -72,8 +100,10 @@ todoList.controller('tab1Controller', ['$scope', 'localStorageService', function
             return !listItem.done;
         })
         
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listOne', stor);
+//        var stor = JSON.stringify($scope.items);
+//        var list = localStorage.setItem('listOne', stor);
+        
+        $localStorage.listOne = $scope.items;
     }
 
     // DELETE AN ITEM FROM THE LIST
@@ -81,8 +111,10 @@ todoList.controller('tab1Controller', ['$scope', 'localStorageService', function
     $scope.deleteItem = function (index) {
         $scope.items.splice(index, 1);
 
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listOne', stor);
+//        var stor = JSON.stringify($scope.items);
+//        var list = localStorage.setItem('listOne', stor);
+        
+        $localStorage.listOne = $scope.items;
     }
 
 }]);
