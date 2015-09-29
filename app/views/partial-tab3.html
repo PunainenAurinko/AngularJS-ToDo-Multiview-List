@@ -26,7 +26,7 @@
         </form>
         <form class="form-group row">
             <ul class="clearfix list-unstyled">
-                <li ng-repeat="item in items">
+                <li ng-repeat="item in items track by $id($index)">
                     <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check" class="checkbox">
                     <span ng-class="{'done':item.done}">{{ item.title }}</span>
                     <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="btn btn-danger button" id="delBtn">

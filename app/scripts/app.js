@@ -5,10 +5,13 @@
 var todoList = angular.module('todoList', [
     'ui.router',
     'ui.bootstrap',
-    'ngStorage'
+    'ngStorage',
+    'LocalStorageModule'
 ]);
 
-todoList.config(function ($stateProvider, $urlRouterProvider) {
+todoList.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+
+    localStorageServiceProvider.setPrefix('tonk0006-ang-todo-list');
 
     $urlRouterProvider.otherwise('/tab1');
 

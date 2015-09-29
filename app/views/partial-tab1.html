@@ -16,7 +16,7 @@
         </div>
     </section>
     <section id="list" class="jumbotron text-center">
-        <form ng-submit="addItem()" name="form" class="form-group row">
+        <form ng-submit="addItem()" ng-click="$storage.items = $storage.items + newItem" name="form" class="form-group row">
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <input ng-model="newItem" type="text" placeholder="Add a task here..." id="input" class="form-control" required>
@@ -26,7 +26,7 @@
         </form>
         <form class="form-group row">
             <ul class="clearfix list-unstyled">
-                <li ng-repeat="item in items">
+                <li ng-repeat="item in items track by $id($index)">
                     <input ng-model="item.done" type="checkbox" value="None" id="checkbox" name="check" class="checkbox">
                     <span ng-class="{'done':item.done}">{{ item.title }}</span>
                     <input ng-click="deleteItem($index)" type="submit" value="&#88;" class="btn btn-danger button" id="delBtn">

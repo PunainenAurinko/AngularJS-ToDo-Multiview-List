@@ -4,30 +4,51 @@ var todoList = angular.module('todoList');
 
 // DEFAULT VIEW TAB 1 CONTROLLER
 
-todoList.controller('tab1Controller', ['$scope', function ($scope, $localStorage) {
+todoList.controller('tab1Controller', ['$scope', 'localStorageService', function ($scope, localStorageService) {
 
     $scope.name = 'to-do list 1';
 
     // TAB 1 LIST ITEMS
+    
+    localStorage.clear();
 
-    $scope.items = [
-        {
-            'title': 'Learn some stuff',
-            'done': false
+    var fullList = localStorage.getItem('listOne');
+    var realList = JSON.parse(fullList);
+
+    if (fullList === null || fullList.length == 0) {
+
+        var defaultList = function () {
+            return [
+                {
+                    'title': 'Learn some stuff',
+                    'done': false
         },
-        {
-            'title': 'Code some stuff',
-            'done': false
+                {
+                    'title': 'Code some stuff',
+                    'done': false
         },
-        {
-            'title': 'Code some more',
-            'done': false
+                {
+                    'title': 'Code some more',
+                    'done': false
         }
             ];
 
-    // LOCAL STORAGE
+        };
+    } else {
+        var defaultList = function () {
+            return realList;
+            console.log(realList)
+        }
+    }
 
-    $scope.$storage = $localStorage;
+    $scope.items = defaultList();
+    console.log($scope.items);
+
+    var stor = JSON.stringify($scope.items);
+    console.log(stor);
+
+    var list = localStorage.setItem('listOne', stor);
+    //    return localStorageService.set('defaultList10', stor);
 
     // ADD ITEMS TO THE LIST
 
@@ -37,6 +58,9 @@ todoList.controller('tab1Controller', ['$scope', function ($scope, $localStorage
             'title': $scope.newItem,
             'done': false
         });
+
+        var stor = JSON.stringify($scope.items);
+        var list = localStorage.setItem('listOne', stor);
 
         $scope.newItem = '';
     }
@@ -53,6 +77,9 @@ todoList.controller('tab1Controller', ['$scope', function ($scope, $localStorage
 
     $scope.deleteItem = function (index) {
         $scope.items.splice(index, 1);
+        
+        var stor = JSON.stringify($scope.items);
+        var list = localStorage.setItem('listOne', stor);
     }
 
 }]);
