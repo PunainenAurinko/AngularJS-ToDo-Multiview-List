@@ -2,53 +2,35 @@
 
 var todoList = angular.module('todoList');
 
-// DEFAULT VIEW TAB 3 CONTROLLER
+// TAB 3 VIEW CONTROLLER
 
-todoList.controller('tab3Controller', ['$scope', 'localStorageService', function ($scope) {
+todoList.controller('tab3Controller', ['$scope', '$localStorage', function ($scope, $localStorage) {
 
     $scope.name = 'to-do list 3';
 
     // TAB 3 LIST ITEMS
 
-//    localStorage.clear();
-
-    var fullListThree = localStorage.getItem('listThree');
-    var realListThree = JSON.parse(fullListThree);
-
-    if (fullListThree === null || realListThree.length == 0) {
-
-        var defaultList = function () {
-            return [
-        {
-            'title': 'Repeat some stuff',
-            'done': false
+    if (!$localStorage.listThree || $localStorage.listThree == 0) {
+        $scope.items = [
+            {
+                'title': 'Repeat some stuff',
+                'done': false
                     },
-        {
-            'title': 'Recode some stuff',
-            'done': false
+            {
+                'title': 'Recode some stuff',
+                'done': false
                     },
-        {
-            'title': 'Repeat some more',
-            'done': false
+            {
+                'title': 'Repeat some more',
+                'done': false
                     }
             ];
-
-        };
     } else {
-        var defaultList = function () {
-            return realListThree;
-            console.log(realListThree)
-        }
+        $scope.items = $localStorage.listThree;
     }
 
-    $scope.items = defaultList();
-    console.log($scope.items);
+    $localStorage.listThree = $scope.items;
 
-    var stor = JSON.stringify($scope.items);
-    console.log(stor);
-
-    var list = localStorage.setItem('listThree', stor);
-   
     // ADD ITEMS TO THE LIST
 
     $scope.addItem = function () {
@@ -58,31 +40,29 @@ todoList.controller('tab3Controller', ['$scope', 'localStorageService', function
             'done': false
         });
 
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listThree', stor);
+        $localStorage.listThree = $scope.items;
 
         $scope.newItem = '';
     }
 
-    // CLEAR COMPLETD ITEMS
+    // CLEAR COMPLETED ITEMS
 
     $scope.clearCompleted = function () {
-        
+
         $scope.items = $scope.items.filter(function (listItem) {
             return !listItem.done;
         })
-        
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listThree', stor);
+
+        $localStorage.listThree = $scope.items;
     }
 
     // DELETE AN ITEM FROM THE LIST
 
     $scope.deleteItem = function (index) {
+
         $scope.items.splice(index, 1);
 
-        var stor = JSON.stringify($scope.items);
-        var list = localStorage.setItem('listThree', stor);
+        $localStorage.listThree = $scope.items;
     }
 
 }]);
