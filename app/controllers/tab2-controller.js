@@ -15,7 +15,7 @@ todoList.controller('tab2Controller', ['$scope', 'localStorageService', function
     var fullListTwo = localStorage.getItem('listTwo');
     var realListTwo = JSON.parse(fullListTwo);
 
-    if (fullListTwo === null || fullListTwo.length == 0) {
+    if (fullListTwo === null || realListTwo.length == 0) {
 
         var defaultList = function () {
             return [
